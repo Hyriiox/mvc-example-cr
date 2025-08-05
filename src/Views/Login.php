@@ -1,4 +1,8 @@
 <section id="login-container">
+    <div class="bienvenue">
+        <h1>Bienvenue sur Code News</h1>
+        <p>Veuillez vous authentifier :</p>
+    </div>
     <form action='login' method="post">
         <input type="text" name="email" placeholder="Identifiant"></input>
         <input type="password" name="password" placeholder="Mot de passe "></input>

@@ -6,8 +6,8 @@
 
     <nav>
         <ul id="menu">
-            <li><a class="link-header" href="/articles/list">Liste</a></li>
-            <li><a class="link-header" href="/articles/ajout">Ajout</a></li>
+            <li></li>
+            <li></li>
         </ul>
     </nav>
 </header>

@@ -1,6 +1,8 @@
 #login-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 #login-container > form {
@@ -12,4 +14,13 @@
 
 #login-container > form > input {
     padding: 10px;
+}
+
+#login-container p {
+    text-align: center;
+    margin: 1em;
+}
+
+#login-container h1 {
+    color: blueviolet;
 }
