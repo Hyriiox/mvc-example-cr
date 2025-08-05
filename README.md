@@ -96,7 +96,7 @@ class ContactController extends Controller
 
 4. La vue `Contact` doit être un fichier `php` contenu dans le dossier `Views`.
 Toujours pour notre exemple :
-```php
+```html
 <section>
 <h1>Formulaire de Contact</h1>
     <form action="contact" method="post">
