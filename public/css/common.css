@@ -4,6 +4,10 @@ html {
     margin: 0px;
 }
 
+p {
+    color: rgb(215, 215, 215);
+}
+
 *,
 *:before,
 *:after {
