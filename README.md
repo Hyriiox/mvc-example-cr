@@ -15,6 +15,10 @@ cd docker-db/
 docker compose up
 ```
 
+> [!NOTE]  
+> Il est tout à fait possible de ne pas utiliser Docker pour mettre en place la base de données de ce projet.
+> Il vous est alors possible d'utiliser une base de données tournant sur, par exemple, XAMPP.
+
 3. Lancer le serveur de développement :
 ```bash
 php -S localhost:8000 -t public/
