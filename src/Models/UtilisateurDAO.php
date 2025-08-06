@@ -124,15 +124,15 @@ class UtilisateurDAO {
      */
     private static function createUserFromRow(array $row_result): Utilisateur {
 
-        // récupération du résultat à partir du tableau
-        $id = $row_result['id'];
-        $email = $row_result['email'];
-        $pseudo = $row_result['pseudo'];
-        $password = $row_result['password'];
+        // récupération du résultat à partir du tableau (adapté aux noms de colonnes de la BDD)
+        $id = $row_result['id_user'];
+        $email = $row_result['email_user'];
+        $pseudo = $row_result['login_user'];
+        $password = $row_result['pwd_user'];
         $fonction = $row_result['fonction'];
 
-        // instanciation de l'utilisateur
-        $utilisateur = new Utilisateur($id, $email, $pseudo, $password, $fonction);
+        // instanciation de l'utilisateur avec l'ordre correct des arguments
+        $utilisateur = new Utilisateur($pseudo, $email, $password, $fonction, (int)$id);
 
         return $utilisateur;
     }

@@ -4,8 +4,8 @@
         <p>Veuillez vous authentifier :</p>
     </div>
     <form action='login' method="post">
-        <input type="text" name="email" placeholder="Identifiant"></input>
-        <input type="password" name="password" placeholder="Mot de passe "></input>
+        <input type="text" name="email" placeholder="Email"></input>
+        <input type="password" name="password" placeholder="Mot de passe"></input>
 
         <input type="submit" class="button" value="Connexion" />
     </form>

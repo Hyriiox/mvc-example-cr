@@ -25,8 +25,9 @@ class CreateController extends Controller
             $password = $_POST['password'];
             $fonction = $_POST['fonction'];
 
-            // TODO hachage du mot de passe (en BCRYPT, par exemple)
-            
+            // Hachage du mot de passe (en BCRYPT)
+            $password = password_hash($password, PASSWORD_BCRYPT);
+
             $utilisateur= new Utilisateur($pseudo, $email, $password, $fonction);
             //appel à laméthode "save" de la classe UtilisateurDAO afin de sauvegarder l'utilisateur en base de données (méthode )
             $utilisateur_bdd = UtilisateurDAO::save($utilisateur);
@@ -40,7 +41,10 @@ class CreateController extends Controller
                 $data['error_message'] = $error_message;
                 
             } else { // cas de succès !
-                // redirection vers la page de login
+                // Connexion automatique de l'utilisateur nouvellement créé
+                session_start();
+                $_SESSION['pseudo'] = $utilisateur->getPseudo();
+                // redirection vers la page d'accueil
                 header("Location: /home");
                 die();
             }

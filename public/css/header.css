@@ -25,10 +25,23 @@ header>h1 {
     height: 2rem;
 }
 
+header nav {
+    display: flex;
+    align-items: center;
+    width: 22%;
+}
+
 header > nav > ul {
+    display: flex;
     list-style-type: none;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 header > nav > ul li {
+    display: flex;
     display: inline;
+    justify-content: space-between;
+    margin: 1rem;
 }

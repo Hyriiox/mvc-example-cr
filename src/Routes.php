@@ -15,4 +15,5 @@ $router = new Router();
 // Définition de toutes les routes du site
 $router->addRoute('/home', HomeController::class, 'index');
 $router->addRoute('/', LoginController::class, 'login');
+$router->addRoute('/login', LoginController::class, 'login');
 $router->addRoute('/create',CreateController::class, 'create');
