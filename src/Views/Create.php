@@ -24,7 +24,7 @@
         <input type="text" name="fonction" placeholder=""></input>
     </div>
 
-    <div class="inline">
+    <div>
         <input type="submit" class="button" value="Enregistrer"/>
         <input type="reset" class="button" value="Annuler"/>
     </div>
