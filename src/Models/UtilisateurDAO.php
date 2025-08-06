@@ -20,7 +20,7 @@ class UtilisateurDAO {
 
         // instanciation d'un tableau de stagaires
         $utilisateurs = array();
-        $sql = "SELECT * from utilisateur";
+        $sql = "SELECT * from utilisateurs";
 
         $results = $pdo->query($sql);
 
@@ -43,7 +43,7 @@ class UtilisateurDAO {
     public static function getById(int $id): Utilisateur {
         // récupération de l'objet de requêtage
         $pdo = Database::connect();
-        $statement = $pdo->prepare("SELECT * from utilisateur WHERE :id");
+        $statement = $pdo->prepare("SELECT * from utilisateurs WHERE :id");
 
         // association des paramètres sur la requête
         $statement->bindParam("id", PDO::PARAM_INT);
@@ -67,7 +67,7 @@ class UtilisateurDAO {
 
         $pdo = Database::connect();
 
-        $statement = $pdo->prepare("select * from utilisateur where email LIKE :email");
+        $statement = $pdo->prepare("select * from utilisateurs where email_user LIKE :email");
 
         $statement->bindParam("email", $email);
 
@@ -89,6 +89,34 @@ class UtilisateurDAO {
     }
 
     /**
+     * Permet de persister en BDD un nouvel utilisateur
+     *
+     * @param Utilisateur $utilisateur Objet de la classe utilisateur à persister
+     * @return $utilisateur Un object de la classe utilisateur si la sauvegarde en BDD s'est bien faite
+     */
+    public static function save(Utilisateur $utilisateur): ?Utilisateur {
+        // Récupération de la connexion à la base de données
+        $pdo = Database::connect();
+        
+        // TODO préparation de la requête "INSERT INTO"
+        // pour plus d'informations sur comment faire des "INSERT INTO" en php
+        // https://phpdelusions.net/pdo_examples/insert
+        $statement = $pdo->prepare("INSERT INTO utilisateurs (email_user, login_user, pwd_user, fonction) VALUES (:email, :pseudo, :password, :fonction)");
+        $statement->bindValue(":email", $utilisateur->getEmail(), PDO::PARAM_STR);
+        $statement->bindValue(":pseudo", $utilisateur->getPseudo(), PDO::PARAM_STR);
+        $statement->bindValue(":password", $utilisateur->getPassword(), PDO::PARAM_STR);
+        $statement->bindValue(":fonction", $utilisateur->getFonction(), PDO::PARAM_STR);
+
+        // TODO on retourne null si un problème a été rencontré, sinon l'utilisateur 
+        if ($statement === false || !$statement->execute()) {
+            return null;
+        }else{
+            return $utilisateur;
+        }  
+    }
+
+
+    /**
      * Instancie un utilsateur à partir d'un enregistrement sous la forme d'un tableau associatif
      * Attention, il faut que le tableau associatif soit complet
      * 
@@ -98,13 +126,13 @@ class UtilisateurDAO {
 
         // récupération du résultat à partir du tableau
         $id = $row_result['id'];
-        $prenom = $row_result['prenom'];
-        $nom = $row_result['nom'];
         $email = $row_result['email'];
+        $pseudo = $row_result['pseudo'];
         $password = $row_result['password'];
+        $fonction = $row_result['fonction'];
 
         // instanciation de l'utilisateur
-        $utilisateur = new Utilisateur($id, $prenom, $nom, $email, $password);
+        $utilisateur = new Utilisateur($id, $email, $pseudo, $password, $fonction);
 
         return $utilisateur;
     }

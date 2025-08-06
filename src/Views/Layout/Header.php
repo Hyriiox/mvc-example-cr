@@ -6,8 +6,7 @@
 
     <nav>
         <ul id="menu">
-            <li></li>
-            <li></li>
+            <li><a class="link-header" href="/create">Créer un compte +</a></li>
         </ul>
     </nav>
 </header>

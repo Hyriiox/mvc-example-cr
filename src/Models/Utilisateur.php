@@ -4,19 +4,19 @@ namespace Afpa\Models;
 
 class Utilisateur
 {
-    private string $id;
-    private string $prenom;
-    private string $nom;
+    private ?int $id;
     private string $email;
+    private string $pseudo;
     private string $password;
+    private string $fonction;
 
-    public function __construct(string $id, string $prenom, string $nom, string $email, string $password)
+    public function __construct(string $pseudo, string $email, string $password, string $fonction, ?int $id = null)
     {
-        $this->id = $id;
-        $this->prenom = $prenom;
-        $this->nom = $nom;
+        $this->pseudo = $pseudo;
         $this->email = $email;
+        $this->fonction = $fonction;
         $this->password = $password;
+        $this->id = $id;
     }
 
     /**
@@ -24,7 +24,7 @@ class Utilisateur
      */
     public function __toString()
     {
-        return "$this->id - $this->prenom $this->nom - $this->email";
+        return "$this->id - $this->pseudo $this->email - $this->fonction";
     }
 
     /**
@@ -52,49 +52,49 @@ class Utilisateur
     }
 
     /**
-     * Get the value of prenom
+     * Get the value of pseudo
      *
      * @return string
      */
-    public function getPrenom(): string
+    public function getPseudo(): string
     {
-        return $this->prenom;
+        return $this->pseudo;
     }
 
     /**
-     * Set the value of prenom
+     * Set the value of pseudo
      *
-     * @param string $prenom
+     * @param string $pseudo
      *
      * @return self
      */
-    public function setPrenom(string $prenom): self
+    public function setPseudo(string $pseudo): self
     {
-        $this->prenom = $prenom;
+        $this->pseudo = $pseudo;
 
         return $this;
     }
 
     /**
-     * Get the value of nom
+     * Get the value of fonction
      *
      * @return string
      */
-    public function getNom(): string
+    public function getFonction(): string
     {
-        return $this->nom;
+        return $this->fonction;
     }
 
     /**
-     * Set the value of nom
+     * Set the value of fonction
      *
-     * @param string $nom
+     * @param string $fonction
      *
      * @return self
      */
-    public function setNom(string $nom): self
+    public function setFonction(string $fonction): self
     {
-        $this->nom = $nom;
+        $this->fonction = $fonction;
 
         return $this;
     }
